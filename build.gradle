@@ -1,32 +1,29 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
+	id 'java'
 	id 'org.springframework.boot' version '2.7.7'
-	id 'io.spring.dependency-management' version '1.1.0'
-	id 'org.jetbrains.kotlin.jvm' version '1.7.22'
-	id 'org.jetbrains.kotlin.plugin.spring' version '1.7.22'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
-group = 'org.kubernetes'
+group = 'org.test'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.jetbrains.kotlin:kotlin-reflect'
-	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+	implementation 'org.springframework.boot:spring-boot-starter-jersey'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-
-tasks.withType(KotlinCompile) {
-	kotlinOptions {
-		freeCompilerArgs = ['-Xjsr305=strict']
-		jvmTarget = '11'
-	}
+	testImplementation 'io.projectreactor:reactor-test'
 }
 
 tasks.named('test') {
