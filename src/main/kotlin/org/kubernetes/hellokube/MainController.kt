@@ -1,11 +1,11 @@
-package org.test.kubernetes
+package org.kubernetes.hellokube
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class HomeController {
+class MainController {
 
-    @GetMapping("/hello")
-    fun hello() = "Hello"
+    @GetMapping("/h")
+    fun hello(): String = "Hello...!"
 }

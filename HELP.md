@@ -1,3 +1,8 @@
+# Read Me First
+The following was discovered as part of building this project:
+
+* The original package name 'org.kubernetes.hello-kube' is invalid and this project uses 'org.kubernetes.hellokube' instead.
+
 # Getting Started
 
 ### Reference Documentation
