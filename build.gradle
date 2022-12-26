@@ -1,14 +1,17 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+// Import task types
+import com.bmuschko.gradle.docker.tasks.image.*
 
 plugins {
 	id 'org.springframework.boot' version '2.7.7'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'org.jetbrains.kotlin.jvm' version '1.6.21'
 	id 'org.jetbrains.kotlin.plugin.spring' version '1.6.21'
+	id 'com.bmuschko.docker-spring-boot-application' version '6.7.0'
 }
 
 group = 'org.kubernetes'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.1'
 sourceCompatibility = '11'
 
 configurations {
@@ -40,4 +43,24 @@ tasks.withType(KotlinCompile) {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.named('bootJar') {
+	launchScript()
+}
+
+tasks.named('dockerBuildImage') {
+
+}
+
+tasks.named('dockerPushImage') {
+
+}
+
+docker {
+	springBootApplication {
+		baseImage = 'adoptopenjdk/openjdk11:latest'
+		ports = [8080,8081]
+		images = ['dtbwije/kubernetes:1.0.3']
+	}
 }
