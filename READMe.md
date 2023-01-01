@@ -27,9 +27,11 @@ gradle clean build dockerBuildImage dockerPushImage
 ```
 
 ## minikube commands
+````
 * minikube start
 * minikube dashboard
-* 
+
+``
 
 ## kubectl commands
 
@@ -47,7 +49,7 @@ gradle clean build dockerBuildImage dockerPushImage
 * expose the service to be accessible from outside 
  kubectl expose deployment hello-node --type=LoadBalancer --port=8080
  
-* list exponsed service
+* list exposed service and notice the he "pending" status
  kubectl get services
 
 * get an ip for the service
@@ -60,3 +62,5 @@ gradle clean build dockerBuildImage dockerPushImage
 * https://bmuschko.github.io/gradle-docker-plugin/#spring_boot_application_plugin
 * https://hub.docker.com/repository/docker/dtbwije/kubernetes
 * https://kubernetes.io/docs/tutorials/hello-minikube/
+* https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/
+* https://kubernetes.io/docs/concepts/architecture/
