@@ -1,9 +1,31 @@
 # Idea stuff
-
 **/.idea/*
 
 # gradle stuff
 **/.gradle/*
 
 # build stuff
-./build/*
+**/bin/
+**/build/
+**/build/*
+**/bin/*
+
+# terraform stuff
+**/.terraform/*
+terraform.tfstate
+terraform.tfstate.backup
+*.tfplan
+*.tfvars
+# Crash logs
+crash.log
+crash.*.log
+ 
+# Local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+ 
+# Terraform CLI config
+.terraformrc
+terraform.rc
