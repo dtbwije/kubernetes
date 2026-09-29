@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-kube-deployment
+spec:
+  selector:
+    matchLabels:
+      app: hello-kube
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hello-kube
+    spec:
+      containers:
+      - name: hello-kube
+        image: dtbwije/kubernetes:1.0.3
+        ports:
+        - containerPort: 8080
