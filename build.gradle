@@ -26,12 +26,21 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.kafka:spring-kafka'
+	runtimeOnly 'org.flywaydb:flyway-core'
+	runtimeOnly 'org.postgresql:postgresql'
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// Source: https://mvnrepository.com/artifact/org.testcontainers/testcontainers
+	testImplementation("org.testcontainers:testcontainers:2.0.5")
+	testImplementation ("org.testcontainers:junit-jupiter:1.21.4")
+	testImplementation ("org.testcontainers:kafka:1.21.4")
 }
 
 tasks.withType(KotlinCompile) {
