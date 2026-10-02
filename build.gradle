@@ -12,7 +12,7 @@ plugins {
 
 group = 'org.kubernetes'
 version = '1.0.1'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 configurations {
 	compileOnly {
@@ -46,7 +46,7 @@ dependencies {
 tasks.withType(KotlinCompile) {
 	kotlinOptions {
 		freeCompilerArgs = ['-Xjsr305=strict']
-		jvmTarget = '11'
+		jvmTarget = '17'
 	}
 }
 
@@ -68,7 +68,7 @@ tasks.named('dockerPushImage') {
 
 docker {
 	springBootApplication {
-		baseImage = 'adoptopenjdk/openjdk11:latest'
+		baseImage = 'eclipse-temurin:17-jre'
 		ports = [8080,8081]
 		images = ['dtbwije/kubernetes:1.0.3']
 	}
