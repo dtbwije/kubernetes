@@ -1,6 +1,9 @@
 # Mobile Data Service
+This setup is an experimental setup for mobile application application that manages flickr images.
 
-A Kotlin and Spring Boot service that consumes mobile JSON events from Kafka, stores them in PostgreSQL, and exposes the stored payloads over HTTP. Docker Compose provides the local stack. The application also has a cloud profile for an Azure-hosted deployment using externally configured database and Kafka TLS settings.
+- DASHBOARD - https://dev.azure.com/dtbwije/HouseProjects
+- Agentic Software modeling - https://asdlc.io/
+
 
 ## Architecture
 
@@ -33,19 +36,20 @@ flowchart LR
   Mobile -->|GET /mobile-data| CloudApp
 ```
 
-Flyway creates the `mobile_events` table and its index at application startup. The Kafka consumer stores each valid JSON message in the `payload` JSONB column with a generated ID and receive timestamp. `GET /mobile-data` returns the stored payloads, newest first.
+## Agents
+
+
+
+## Tools
+- 
 
 ## Run Locally
 
-Prerequisites: Docker Desktop and a Java 17-compatible JDK.
+Prerequisites: 
+- Docker Desktop 
+- Java 17-compatible JDK.
 
-Copy the local environment template and start the stack:
-
-```powershell
-Copy-Item .env.example .env
-./gradlew bootJar
-docker compose up --build
-```
+Tested on bashShell on windows.
 
 On macOS/Linux (bash or zsh):
 
@@ -57,34 +61,29 @@ docker compose up --build
 
 Compose starts PostgreSQL and Kafka first and waits for both health checks before starting the app. The app listens at `http://localhost:8080`; if that host port is busy, start with another port:
 
-```powershell
-$env:APP_PORT = "8081"
-docker compose up --build
-```
-
 On macOS/Linux (bash or zsh):
 
 ```bash
 APP_PORT=8081 docker compose up --build
 ```
-
-The mobile-data endpoint is `GET http://localhost:8080/mobile-data` (use `8081` if you changed `APP_PORT`). To send a sample event from PowerShell:
-
-```powershell
-'{"deviceId":"device-1","value":42}' | docker compose exec -T kafka /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server kafka:29092 --topic mobile-data
-Invoke-RestMethod http://localhost:8080/mobile-data
-```
-
+### Accessing the applicaiton
+- REST API get mobile data endpoing is  `GET http://localhost:8080/mobile-data` (use `8081` if you changed `APP_PORT`).
 On macOS/Linux (bash or zsh):
 
 ```bash
 printf '%s\n' '{"deviceId":"device-1","value":42}' | docker compose exec -T kafka /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server kafka:29092 --topic mobile-data
 curl http://localhost:8080/mobile-data
 ```
-
-For pgAdmin or another database client on the host, connect to `localhost:5432`, database `mobile-data`, username `hellokube`, and the `POSTGRES_PASSWORD` value from `.env`. The sample password in `.env.example` is for local development only. PostgreSQL data is persisted in a Docker volume.
+## Database setup
+- connect to `localhost:5432`, 
+- database `mobile-data`, 
+- username `hellokube`,
+- `POSTGRES_PASSWORD` value from `.env`. 
+- The sample password in `.env.example` is for local development only. PostgreSQL data is persisted in a Docker volume.
 
 ## Azure
+
+THIS PART IS NOT IMPLEMENTED YET
 
 The `cloud` Spring profile accepts database settings through environment variables and configures Kafka TLS using mounted keystore/truststore files and secret-sourced passwords. Supply these from Azure Key Vault and the chosen Azure hosting platform; do not commit production secrets.
 
@@ -93,3 +92,4 @@ Azure hosting is a target, not yet a complete deployment in this repository. The
 ## Kubernetes Training
 
 Kubernetes training material can be found [here](kubeneters.md).
+
