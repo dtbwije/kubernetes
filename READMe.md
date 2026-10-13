@@ -47,7 +47,7 @@ flowchart LR
 
 Prerequisites: 
 - Docker Desktop 
-- Java 17-compatible JDK.
+- Java 17-compatible JDK. Ensure `JAVA_HOME` points to that JDK; the Gradle wrapper uses `JAVA_HOME`, even if `java` on `PATH` is a different version.
 
 Tested on bashShell on windows.
 
@@ -92,4 +92,3 @@ Azure hosting is a target, not yet a complete deployment in this repository. The
 ## Kubernetes Training
 
 Kubernetes training material can be found [here](kubeneters.md).
-

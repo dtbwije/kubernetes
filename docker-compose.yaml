@@ -1,23 +1,4 @@
 services:
-  app:
-    build:
-      context: .
-    image: hello-kube:local
-    ports:
-      - "${APP_PORT:-8080}:8080"
-    environment:
-      SPRING_PROFILES_ACTIVE: local
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: ${POSTGRES_DB:-mobile-data}
-      DB_USERNAME: ${POSTGRES_USER:-hellokube}
-      DB_PASSWORD: ${POSTGRES_PASSWORD:-hellokube}
-      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
-    depends_on:
-      postgres:
-        condition: service_healthy
-      kafka:
-        condition: service_healthy
 
   postgres:
     image: postgres:16-alpine
