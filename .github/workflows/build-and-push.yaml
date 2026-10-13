@@ -12,7 +12,7 @@ permissions:
   id-token: write   # lets the job get an Azure token via OIDC (no stored passwords)
 
 env:
-  IMAGE_NAME: hello-kube
+  IMAGE_NAME: user-event-consumer
 
 jobs:
   build:
