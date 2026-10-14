@@ -37,7 +37,7 @@ jobs:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
-      name: development
+      name: developmet
     steps:
       - uses: actions/checkout@v4
 
