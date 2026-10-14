@@ -124,3 +124,5 @@ az role assignment create --assignee e82d58cd-970c-407d-90f6-6501f1c88f38 --role
 $acrId = az acr show -n learnstuff --query id -o tsv
 az role assignment create --subscription 1f681932-af34-40e4-be5a-858701c64d48 --assignee e82d58cd-970c-407d-90f6-6501f1c88f38 --role AcrPush --scope "/subscriptions/1f681932-af34-40e4-be5a-858701c64d48/resourceGroups/loginappresources/providers/Microsoft.ContainerRegistry/registries/learnstuff" 
 $ MSYS_NO_PATHCONV=1 az role assignment create --assignee e82d58cd-970c-407d-90f6-6501f1c88f38 --role AcrPush --scope "/subscriptions/1f681932-af34-40e4-be5a-858701c64d48/resourceGroups/loginappresources/providers/Microsoft.ContainerRegistry/registries/learnstuff"
+https://api.github.com/users/dtbwije
+https://api.github.com/repos/dtbwije/kubernetes
