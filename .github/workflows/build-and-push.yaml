@@ -36,6 +36,8 @@ jobs:
     # Only publish from main (pull requests just build and test)
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    environment:
+      name: deployment
     steps:
       - uses: actions/checkout@v4
 
