@@ -1,9 +1,21 @@
 # Mobile Data Service
-This setup is an experimental setup for mobile application application that manages flickr images.
+This setup is an experimental setup for mobile application that accesses back end and publishes events with kafka. We will try to use asynchronous APIs and use kotlin as the language so that we can share language between mobile client and the servers.
+
+Goals
+ - Manage a setup in azure.
+ - Build a knowledge base to establsh secure communication channels.
+ - Build a local setup that can replicate a system that exist on azure.
+
+
+
 
 - DASHBOARD - https://dev.azure.com/dtbwije/HouseProjects
 - Agentic Software modeling - https://asdlc.io/
 
+
+This architecture will be a liveing archtecture based on the requrirements.
+## Document references
+  - 
 
 ## Architecture
 
